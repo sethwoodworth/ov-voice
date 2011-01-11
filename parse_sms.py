@@ -5,6 +5,7 @@
 #   nagle@animats.com
 #
 from googlevoice import Voice
+from googlevoice.util import *
 import sys
 import BeautifulSoup
 
@@ -36,7 +37,9 @@ voice = Voice()
 voice.login()
 
 page = 'sms'
-sms2 = voice.XMLParser(self, page, lambda: self.__do_special_page('XML_%s' % page.upper(), {'page': 'p2'}, headers).read())
+sms2 = XMLParser(voice, page, lambda: voice.__do_special_page('XML_%s' % page.upper(), {'page': 'p2'}, headers).read())
 
-for msg in extractsms(sms2):
-    print str(msg)
+print sms2
+
+#for msg in extractsms(sms2):
+#    print str(msg)
