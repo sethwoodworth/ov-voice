@@ -191,11 +191,11 @@ class Voice(object):
         Loads a page out of the settings and pass it on to urllib Request
         """
         print "doing do_page! " + str(page)
-        print "data: " + str(data)
+        if not page == 'login':
+            print "data: " + str(data)
         page = page.upper()
         if isinstance(data, dict) or isinstance(data, tuple):
             data = urlencode(data)
-            print "url'd data: " + str(data)
         headers.update({'User-Agent': 'PyGoogleVoice/0.5'})
         if log:
             log.debug('%s?%s - %s' % (getattr(settings, page)[22:], data or '', headers))
@@ -203,7 +203,6 @@ class Voice(object):
             return urlopen(Request(getattr(settings, page) + data, None, headers))
         if data:
             headers.update({'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'})
-        print data
         print headers
         try:
             print getattr(settings, page) 

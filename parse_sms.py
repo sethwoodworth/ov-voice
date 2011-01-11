@@ -41,5 +41,5 @@ sms2 = XMLParser(voice, page, lambda: voice.__do_special_page('XML_%s' % page.up
 
 print sms2
 
-#for msg in extractsms(sms2):
-#    print str(msg)
+for msg in extractsms(sms2.html):
+    print str(msg)
