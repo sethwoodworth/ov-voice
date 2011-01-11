@@ -1,0 +1,5 @@
+copy the local voice.py over the system voice.py
+    /usr/local/lib/python2.6/dist-packages/googlevoice/voice.py
+
+
+cp ./voice /usr/local/lib/python2.6/dist-packages/googlevoice/voice.py
