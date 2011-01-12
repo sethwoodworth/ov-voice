@@ -21,6 +21,8 @@ class Voice(object):
 
         for name in settings.FEEDS:
             setattr(self, name, self.__get_xml_page(name))
+
+        setattr(self, 'all_sms', self.__get_xml_page(self, 'sms', {'page': 'p2'}))
         
     ######################
     # Some handy methods

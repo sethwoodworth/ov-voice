@@ -36,10 +36,10 @@ def extractsms(htmlsms) :
 voice = Voice()
 voice.login()
 
-page = 'sms'
-sms2 = XMLParser(voice, page, lambda: voice.__do_special_page('XML_%s' % page.upper(), {'page': 'p2'}, headers).read())
+#page = 'sms'
+#sms2 = XMLParser(voice, page, lambda: voice.__do_special_page('XML_%s' % page.upper(), headers).read())
 
-print sms2
+#print sms2
 
-for msg in extractsms(sms2.html):
-    print str(msg)
+#for msg in extractsms(sms2.html):
+#    print str(msg)
