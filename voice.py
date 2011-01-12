@@ -89,7 +89,15 @@ class Voice(object):
         del self._special 
         assert self.special == None
         return self
-        
+
+    def all_messages(self):
+        """
+        download all textual messages associated with this account
+        """
+        #TODO: dynamic range generation
+        data = {'page': 'p3'}
+        return self.__my_page(data)        
+
     def call(self, outgoingNumber, forwardingNumber=None, phoneType=None, subscriberNumber=None):
         """
         Make a call to an ``outgoingNumber`` from your ``forwardingNumber`` (optional).
@@ -211,6 +219,21 @@ class Voice(object):
             return urlopen(Request(getattr(settings, page), data, headers))
         except:
             return urlopen(Request(getattr(settings, page), data, headers))
+
+    def __my_page(self, data, headers={}):
+        """
+        Loads the inbox page you want, but with autentication
+        """
+        if isinstance(data, dict) or isinstance(data, tuple):
+            data = urlencode(data)
+            print ''
+            print data
+        headers.update({'User-Agent': 'PyGoogleVoice/0.5', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'})
+        hard_url = 'https://www.google.com/voice/inbox/recent/sms/'
+
+        return urlopen(Request(hard_url, data, headers))
+
+
 
     def __validate_special_page(self, page, data={}, **kwargs):
         """
